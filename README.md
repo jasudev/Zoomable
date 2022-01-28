@@ -48,4 +48,4 @@ instagram : [@dev.fabula](https://www.instagram.com/dev.fabula)
 email : [dev.fabula@gmail.com](mailto:dev.fabula@gmail.com)
 
 ## License
-ZoomableView is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
+Zoomable is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
