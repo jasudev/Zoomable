@@ -35,11 +35,12 @@ It is a container that allows you to zoom in and out of an image using only Swif
     }
     ```
 
-## Dependencies
-```
+## Swift Package Manager
+The Swift Package Manager is a tool for automating the distribution of Swift code and is integrated into the swift compiler. Once you have your Swift package set up, adding Zoomable as a dependency is as easy as adding it to the dependencies value of your Package.swift.
+
+```swift
 dependencies: [
-    .package(url: "https://github.com/SDWebImage/SDWebImage.git", .branch("master")),
-    .package(url: "https://github.com/SDWebImage/SDWebImageSwiftUI.git", .branch("master"))
+    .package(url: "https://github.com/jasudev/Zoomable.git", .branch("main"))
 ]
 ```
 
