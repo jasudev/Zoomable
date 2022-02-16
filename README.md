@@ -1,4 +1,4 @@
-# **Zoomable**
+# **Zoomable for SwiftUI**
 It is a container that allows you to zoom in and out of an image using only SwiftUI.
 
 [![Platforms](https://img.shields.io/badge/Platforms-iOS%20%7C%20macOS-blue?style=flat-square)](https://developer.apple.com/macOS)
