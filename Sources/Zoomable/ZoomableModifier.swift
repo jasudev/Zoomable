@@ -46,7 +46,7 @@ public struct ZoomableModifier: ViewModifier {
     private var showsIndicators: Bool = false
     
     @GestureState private var zoomState = ZoomState.inactive
-    @State private var currentScale: CGFloat = 1.0
+    @Binding var currentScale: CGFloat
     
     /**
      Initializes an `ZoomableModifier`
@@ -58,11 +58,13 @@ public struct ZoomableModifier: ViewModifier {
     public init(contentSize: CGSize,
                 min: CGFloat = 1.0,
                 max: CGFloat = 3.0,
-                showsIndicators: Bool = false) {
+                showsIndicators: Bool = false,
+                scale: Binding<CGFloat> ) {
         self.contentSize = contentSize
         self.min = min
         self.max = max
         self.showsIndicators = showsIndicators
+        self._currentScale = scale
     }
     
     var scale: CGFloat {

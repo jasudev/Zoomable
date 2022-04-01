@@ -32,6 +32,7 @@ public struct ZoomableImageView<Content>: View where Content: View {
     private var min: CGFloat = 1.0
     private var max: CGFloat = 3.0
     private var showsIndicators: Bool = false
+    @Binding var scale: CGFloat
     @ViewBuilder private var overlay: () -> Content
     
     @State private var imageSize: CGSize = .zero
@@ -48,17 +49,19 @@ public struct ZoomableImageView<Content>: View where Content: View {
                 min: CGFloat = 1.0,
                 max: CGFloat = 3.0,
                 showsIndicators: Bool = false,
+                scale: Binding<CGFloat>,
                 @ViewBuilder overlay: @escaping () -> Content) {
         self.url = url
         self.min = min
         self.max = max
         self.showsIndicators = showsIndicators
+        self._scale = scale
         self.overlay = overlay
     }
     
     public var body: some View {
         GeometryReader { proxy in
-            ZoomableView(size: imageSize, min: self.min, max: self.max, showsIndicators: self.showsIndicators) {
+            ZoomableView(size: imageSize, min: self.min, max: self.max, showsIndicators: self.showsIndicators, scale: self.scale) {
                 WebImage(url: url)
                     .resizable()
                     .onSuccess(perform: { image, _, _ in
