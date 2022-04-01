@@ -31,6 +31,7 @@ public struct ZoomableView<Content>: View where Content: View {
     private var min: CGFloat = 1.0
     private var max: CGFloat = 3.0
     private var showsIndicators: Bool = false
+    @Binding var scale: CGFloat
     @ViewBuilder private var content: () -> Content
 
     /**
@@ -45,11 +46,13 @@ public struct ZoomableView<Content>: View where Content: View {
                 min: CGFloat = 1.0,
                 max: CGFloat = 3.0,
                 showsIndicators: Bool = false,
+                scale: Binding<CGFloat>,
                 @ViewBuilder content: @escaping () -> Content) {
         self.size = size
         self.min = min
         self.max = max
         self.showsIndicators = showsIndicators
+        self._scale = scale
         self.content = content
     }
     
@@ -57,6 +60,6 @@ public struct ZoomableView<Content>: View where Content: View {
         content()
             .frame(width: size.width, height: size.height, alignment: .center)
             .contentShape(Rectangle())
-            .modifier(ZoomableModifier(contentSize: self.size, min: min, max: max, showsIndicators: showsIndicators))
+            .modifier(ZoomableModifier(contentSize: self.size, min: min, max: max, showsIndicators: showsIndicators, scale: $scale))
     }
 }
